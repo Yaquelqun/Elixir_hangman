@@ -8,5 +8,10 @@ defmodule GameTest do
     assert game.turns_left == 7
     assert game.game_state == :initializing
     assert length(game.letters) > 0
+    Enum.each(game.letters, fn letter ->
+      assert(letter >= "a")
+      assert(letter <= "z")
+      end
+    )
   end
 end
