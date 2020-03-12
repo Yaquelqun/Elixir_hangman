@@ -22,6 +22,10 @@ defmodule Hangman.Game do
     game
   end
 
+  def make_move(game, guess) when guess <= "a" or guess >= "z" do
+    Map.put(game, :game_state, :wrong_input)
+  end
+
   def make_move(game, guess) do
     accept_move(game, guess, MapSet.member?(game.used, guess))
   end

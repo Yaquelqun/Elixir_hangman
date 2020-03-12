@@ -74,4 +74,11 @@ defmodule GameTest do
     game = Game.make_move(game, "p")
     assert game.game_state == :lost
   end
+
+
+  test "a bad input is recognised" do
+    game = Game.new_game("wibble")
+    game = Game.make_move(game, 23)
+    assert game.game_state == :wrong_input
+  end
 end
