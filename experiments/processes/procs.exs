@@ -1,11 +1,17 @@
 defmodule Procs do
   
-  def greeter(what_to_say) do
+  def greeter(count) do
     receive do
+      { :boom, reason } ->
+        exit(reason)
+      { :reset } ->
+        greeter(0)
+      { :add, n } ->
+        greeter(count + n)
       msg ->
-        IO.puts "#{what_to_say}: #{inspect msg}"
+        IO.puts "#{count}: #{inspect msg}"
     end
 
-    greeter(what_to_say)
+    greeter(count + 2)
   end
 end
