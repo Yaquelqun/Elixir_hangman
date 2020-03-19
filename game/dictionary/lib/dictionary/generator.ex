@@ -1,5 +1,6 @@
 
 defmodule Dictionary.Generator do
+  
   def word_list() do
     '../../assets/words.txt'
     |> Path.expand(__DIR__)
